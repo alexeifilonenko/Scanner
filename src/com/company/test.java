@@ -10,7 +10,9 @@ public class test {
     public static void main(String[] args) throws Exception{
         List<String> list = Files.readAllLines(Paths.get("file.txt"));
         for(String item: list) {
-            System.out.println(item);
+            System.out.println(item.length());
+
+
         }
     }
 }

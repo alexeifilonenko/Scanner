@@ -22,10 +22,20 @@ public class Main {
             String path = "C:/resources/file.txt";              //создаем переменную, в которую помещаем путь до нашего файла
             File file = new File(path);                         //добавляем созданный файл в код
             Scanner scanner1 = new Scanner(file);               //объекту класса Scanner передаем наш файл
-            //List<String> rows = Files.readAllLines(Paths.get(path), StandardCharsets.UTF_8);
-            String line = scanner1.nextLine();
-            String[] words =line.split(" ");
-            System.out.println(Arrays.toString(words));
+            while (scanner1.hasNextLine()) {                    //пока в файле есть строки
+                //System.out.println(scanner1.nextLine());        //выводим строки в консоль
+
+                String line = scanner1.nextLine();
+                String[] words = line.split(" ");
+
+                System.out.println(Arrays.toString(words));
+                for (int i = 0; i < words.length; i++) {
+                    if (words[i].contains("abc")) {
+                        System.out.println(words[i]);
+                    }
+                }
+            }
+
 
         }else if ("Read from console".equals(s)) {
             System.out.println("Type any symbol using your keyboard");
