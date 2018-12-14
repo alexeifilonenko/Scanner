@@ -14,11 +14,16 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Read from file or Read from console?");
-        String s = scanner.nextLine();
-        if ("Read from file".equals(s)) {
+        System.out.println("1 - Read from file or 2 - Read from console?");
+        Integer s = scanner.nextInt();
+        while (s != 1 && s != 2) {
+            System.out.println("You must type only 1 - Read from file or 2 - Read from console");
+            s = scanner.nextInt();
+        }
+        if (s == 1) {
             System.out.println("Enter the file name with extension: ");
             String str = scanner.nextLine();
+            scanner.nextLine();
             String path = "C:/resources/file.txt";              //создаем переменную, в которую помещаем путь до нашего файла
             File file = new File(path);                         //добавляем созданный файл в код
             Scanner scanner1 = new Scanner(file);               //объекту класса Scanner передаем наш файл
@@ -27,21 +32,30 @@ public class Main {
 
                 String line = scanner1.nextLine();
                 String[] words = line.split(" ");
-
+                System.out.println("Available words for sorting");
                 System.out.println(Arrays.toString(words));
+                System.out.println("Type symbols for looking for");
+                String abc = scanner.nextLine();
+                System.out.println("List of words after sorting");
                 for (int i = 0; i < words.length; i++) {
-                    if (words[i].contains("abc")) {
+
+                    if (words[i].contains(abc)) {
                         System.out.println(words[i]);
                     }
                 }
             }
 
 
-        }else if ("Read from console".equals(s)) {
+        }else if (s == 2) {
             System.out.println("Type any symbol using your keyboard");
-            String str = scanner.nextLine();
-        }else {
-            System.out.println("Type only Read from file or Read from console");
+            String srt = scanner.nextLine();
+            scanner.nextLine();
+
+        }/*else if (s == "exit") {
+
+        }*/
+        else {
+            System.out.println("Type only 1 or 2");
         }
     }
 }
