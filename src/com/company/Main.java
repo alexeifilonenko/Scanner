@@ -14,16 +14,16 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("1 - Read from file or 2 - Read from console?");
-        Integer s = scanner.nextInt();
-        while (s != 1 && s != 2) {
-            System.out.println("You must type only 1 - Read from file or 2 - Read from console");
-            s = scanner.nextInt();
+        System.out.println("Read from file or Read from console?");
+        System.out.println("Type Exit for closing program");
+        String s = scanner.nextLine();
+        while ((!s.equals("Read from file")) && (!s.equals("Read from console")) && (!s.equals("Exit"))) {
+            System.out.println("You must type only Read from file Read from console or Exit");
+            s = scanner.nextLine();
         }
-        if (s == 1) {
+        if ("Read from file".equals(s)) {
             System.out.println("Enter the file name with extension: ");
             String str = scanner.nextLine();
-            scanner.nextLine();
             String path = "C:/resources/file.txt";              //создаем переменную, в которую помещаем путь до нашего файла
             File file = new File(path);                         //добавляем созданный файл в код
             Scanner scanner1 = new Scanner(file);               //объекту класса Scanner передаем наш файл
@@ -46,16 +46,15 @@ public class Main {
             }
 
 
-        }else if (s == 2) {
+        }else if ("Read from console".equals(s)) {
             System.out.println("Type any symbol using your keyboard");
             String srt = scanner.nextLine();
-            scanner.nextLine();
+        }
 
-        }/*else if (s == "exit") {
 
-        }*/
-        else {
-            System.out.println("Type only 1 or 2");
+        else if("Exit".equals(s)){
+            System.out.println("Program is closing...");
+            scanner.close();
         }
     }
 }
