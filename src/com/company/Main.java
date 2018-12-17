@@ -24,8 +24,8 @@ public class Main {
         if ("Read from file".equals(s)) {
             System.out.println("Enter the file name with extension: ");
             String str = scanner.nextLine();
-            String path = "C:/resources/file.txt";              //создаем переменную, в которую помещаем путь до нашего файла
-            File file = new File(path);                         //добавляем созданный файл в код
+            //String path = "/resources/file.txt";              //создаем переменную, в которую помещаем путь до нашего файла
+            File file = new File("resources/file.txt");                         //добавляем созданный файл в код
             Scanner scanner1 = new Scanner(file);               //объекту класса Scanner передаем наш файл
             while (scanner1.hasNextLine()) {                    //пока в файле есть строки
                 //System.out.println(scanner1.nextLine());        //выводим строки в консоль
@@ -49,6 +49,18 @@ public class Main {
         }else if ("Read from console".equals(s)) {
             System.out.println("Type any symbol using your keyboard");
             String srt = scanner.nextLine();
+            String[] words1 = srt.split(" ");
+            System.out.println("Available words for sorting");
+            System.out.println(Arrays.toString(words1));
+            System.out.println("Type symbols for looking for");
+            String a = scanner.nextLine();
+            System.out.println("List of words after sorting");
+            for(int i = 0; i < words1.length; i++) {
+                if (words1[i].contains(a)) {
+                    System.out.println(words1[i]);
+                }
+            }
+
         }
 
 
